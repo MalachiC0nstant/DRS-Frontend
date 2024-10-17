@@ -8,7 +8,7 @@ import "./App.css";
 const App: React.FC = () => {
   return (
     <Router>
-      <Navbar />
+      {/* <Navbar /> */}
       <Routes>
         <Route path="/" element={<MainPage />} />
         <Route path="/canvas" element={<CanvasPage />} />

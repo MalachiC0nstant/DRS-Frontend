@@ -1,0 +1,29 @@
+/* CanvasToolNavbar.css */
+
+.canvas-tool-navbar {
+    height: 50px;
+    background-color: #444;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    position: fixed; 
+    top: 50px; 
+    left: 0;
+    right: 0;
+    z-index: 99;
+  }
+  
+  .canvas-tool-navbar button {
+    background-color: #555;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+  }
+  
+  .canvas-tool-navbar button:hover {
+    background-color: #777;
+  }
+  

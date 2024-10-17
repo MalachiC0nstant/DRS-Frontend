@@ -1,0 +1,36 @@
+.canvas-right-sidebar {
+  position: fixed;
+  top: 60px; 
+  right: 0;
+  width: 200px;
+  height: calc(100% - 60px); 
+  background-color: white;
+  padding: 1rem;
+  color: white;
+  z-index: 500; 
+}
+
+.canvas-right-sidebar h3 {
+  margin-bottom: 1rem;
+}
+
+.canvas-right-sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.canvas-right-sidebar ul li {
+  margin-bottom: 1rem;
+}
+
+.canvas-right-sidebar button {
+  background-color: #444;
+  border: none;
+  color: white;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+}
+
+.canvas-right-sidebar button:hover {
+  background-color: #555;
+}
