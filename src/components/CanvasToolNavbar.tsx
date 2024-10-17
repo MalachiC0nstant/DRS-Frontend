@@ -1,12 +1,24 @@
 import React from "react";
 import "../css/CanvasToolNavbar.css";
+import zoomInIcon from "../assets/zoom-in-lens-svgrepo-com.svg";
+import zoomOutIcon from "../assets/zoom-out-svgrepo-com.svg";
 
 const CanvasToolNavbar: React.FC = () => {
   return (
     <nav className="canvas-tool-navbar">
-      <button>Zoom In</button>
-      <button>Zoom Out</button>
-      <button>Color</button>
+      <ul className="tool-actions">
+        <li>
+          <button className="tool-btn">
+            <img src={zoomInIcon} alt="Zoom In" />
+          </button>
+        </li>
+        <li>
+          <button className="tool-btn">
+            <img src={zoomOutIcon} alt="Zoom Out" />
+          </button>
+        </li>
+        {/* More icons here*/}
+      </ul>
     </nav>
   );
 };

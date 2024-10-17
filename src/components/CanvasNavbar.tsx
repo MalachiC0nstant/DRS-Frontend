@@ -4,18 +4,22 @@ import "../css/CanvasNavbar.css";
 const CanvasNavbar: React.FC = () => {
   return (
     <nav className="canvas-navbar">
-      <div className="canvas-navbar-logo">Canvas Navbar</div>
-      <ul className="canvas-navbar-actions">
-        <li>
-          <button>Save</button>
-        </li>
-        <li>
-          <button>Undo</button>
-        </li>
-        <li>
-          <button>Redo</button>
-        </li>
+      <ul className="navbar-left">
+        <li>File</li>
+        <li>Edit</li>
+        <li>View</li>
+        <li>Arrange</li>
+        <li>Extras</li>
+        <li>Help</li>
       </ul>
+
+      <div className="navbar-center">
+        <button>Save your work</button>
+      </div>
+
+      <div className="navbar-right">
+        <button className="light-mode-btn">Light</button>
+      </div>
     </nav>
   );
 };

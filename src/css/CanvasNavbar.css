@@ -1,7 +1,5 @@
-/* CanvasNavbar.css */
-
 .canvas-navbar {
-    height: 50px;
+    height: 25px;
     background-color: #333;
     color: white;
     display: flex;
@@ -15,6 +13,28 @@
     z-index: 100; 
   }
   
+.navbar-left,
+.navbar-right {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-left li {
+    margin-right: 20px; 
+    list-style: none;
+    cursor: pointer;
+  }
+  
+  .navbar-left li:hover {
+    text-decoration: underline; 
+  }
+
+  .navbar-center {
+    text-align: center;
+    flex-grow: 1;
+    font-size: 16px; 
+    color: rgba(255, 255, 255, 0.9); 
+  }
   .canvas-navbar-actions {
     list-style: none;
     display: flex;
@@ -33,3 +53,13 @@
     background-color: #777;
   }
   
+  .light-mode-btn {
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, 0.8); 
+    cursor: pointer;
+    font-size: 16px;
+  }
+  .light-mode-btn:hover {
+    text-decoration: underline;
+  }

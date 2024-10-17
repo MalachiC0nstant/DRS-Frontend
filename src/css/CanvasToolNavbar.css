@@ -1,29 +1,46 @@
 /* CanvasToolNavbar.css */
 
 .canvas-tool-navbar {
-    height: 50px;
+    height: 30px;
     background-color: #444;
-    color: white;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    position: fixed; 
-    top: 50px; 
+    align-items: center; 
+    padding: 0 20px;
+    position: fixed;
+    top: 25px; 
     left: 0;
     right: 0;
     z-index: 99;
+}
+  
+  .tool-actions {
+    list-style: none;
+    display: flex;
+    gap: 10px;
+    margin: 0;
+    padding: 0;
   }
   
-  .canvas-tool-navbar button {
-    background-color: #555;
-    color: white;
+  .tool-actions li {
+    display: inline-block;
+  }
+  
+  .tool-btn {
+    background-color: transparent;
     border: none;
-    padding: 5px 10px;
     cursor: pointer;
-  }
+    height: 100%; /* Make the button take full height */
+    display: flex; 
+    align-items: center; /* Vertically center the content inside */
+}
+
+.tool-btn img {
+    width: 24px; /* Adjust size as needed */
+    height: 24px;
+    filter: invert(1); /* Invert to make the icon white */
+}
   
-  .canvas-tool-navbar button:hover {
-    background-color: #777;
+  .tool-btn:hover img {
+    filter: invert(0.7); /* Lighter on hover */
   }
   
