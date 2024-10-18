@@ -2,7 +2,7 @@
 
 .canvas-tool-navbar {
     height: 30px;
-    background-color: #444;
+    background-color: #333;
     display: flex;
     align-items: center; 
     padding: 0 20px;
@@ -11,6 +11,7 @@
     left: 0;
     right: 0;
     z-index: 99;
+    border-bottom: 1px solid #555; 
 }
   
   .tool-actions {

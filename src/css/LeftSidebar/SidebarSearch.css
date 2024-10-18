@@ -1,0 +1,33 @@
+.search-box {
+    display: flex;
+    align-items: center;
+    background-color: #444;
+    padding: 5px;
+    border-radius: 5px;
+    margin-bottom: 15px; 
+    position: relative;
+  }
+  
+  .search-input {
+    width: 100%;
+    padding: 8px;
+    border: none;
+    border-radius: 5px;
+    background-color: #333;
+    color: white;
+    outline: none;
+  }
+  
+  .clear-btn {
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    position: absolute;
+    right: 10px;
+  }
+  
+  .clear-btn:hover {
+    color: #999;
+  }
+  

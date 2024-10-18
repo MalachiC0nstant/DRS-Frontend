@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "../css/CanvasLeftSidebar.css";
+import SidebarSearch from "./Sidebar/SidebarSearch";
+import SidebarShapes from "./Sidebar/SidebarShapes";
 
 const LeftSidebar: React.FC = () => {
   const [sidebarWidth, setSidebarWidth] = useState(200);
@@ -33,8 +35,13 @@ const LeftSidebar: React.FC = () => {
   return (
     <div className="left-sidebar" style={{ width: `${sidebarWidth}px` }}>
       <div className="sidebar-content">
-        <button className="shape-btn">Shape 1</button>
-        <button className="shape-btn">Shape 2</button>
+        <SidebarSearch />
+        <SidebarShapes title="Walls" />
+        <SidebarShapes title="Volumes" />
+        <SidebarShapes title="Crimps" />
+        <SidebarShapes title="Pinches" />
+        <SidebarShapes title="Slopers" />
+        <SidebarShapes title="Footholds" />
       </div>
       <div className="sidebar-resizer" onMouseDown={handleMouseDown}></div>
     </div>
