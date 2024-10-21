@@ -84,3 +84,10 @@
     height: calc(100vh - 85px);
     overflow: auto;
 }
+
+.projects-container {
+    display: flex;
+    flex-wrap: wrap;  
+    padding: 20px;
+    gap: 20px;  
+  }

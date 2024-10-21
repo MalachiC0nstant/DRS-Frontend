@@ -1,5 +1,6 @@
 import React from "react";
 import Navbar from "../components/Navbar";
+import MainPageContent from "../components/MainPageContent";
 import "../css/MainPage.css";
 
 const MainPage: React.FC = () => {
@@ -33,8 +34,7 @@ const MainPage: React.FC = () => {
         </div>
 
         <div className="page-content">
-          <h1>Main Page</h1>
-          <p>Welcome to the Climbing App</p>
+          <MainPageContent />
         </div>
       </div>
     </div>
