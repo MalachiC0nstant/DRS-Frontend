@@ -6,7 +6,7 @@ interface SidebarShapesProps {
 }
 
 const SiderbarShapes: React.FC<SidebarShapesProps> = ({ title }) => {
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen);

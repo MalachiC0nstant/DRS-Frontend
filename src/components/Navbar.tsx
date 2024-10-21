@@ -1,22 +1,26 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import "../css/Navbar.css";
+import searchIcon from "../assets/searchIcon.svg";
 
 const Navbar: React.FC = () => {
   return (
-    <nav className="navbar">
-      <div className="navbar-logo">
-        <Link to="/">ClimbingApp</Link>
+    <div className="navbar">
+      <div className="navbar-left-corner">
+        <div className="navbar-title">Digital Route Setter</div>
       </div>
-      <ul className="navbar-links">
-        <li>
-          <Link to="/canvas">Canvas</Link>
-        </li>
-        <li>
-          <Link to="/login">Login</Link>
-        </li>
-      </ul>
-    </nav>
+      <div className="navbar-search">
+        <img src={searchIcon} alt="Search" className="search-icon" />
+        <input
+          type="text"
+          placeholder="Search for Projects, Templates, Communities"
+        />
+      </div>
+      <div className="navbar-right">
+        <div>Help</div>
+        <div>Upgrade</div>
+        <div>Login</div>
+      </div>
+    </div>
   );
 };
 

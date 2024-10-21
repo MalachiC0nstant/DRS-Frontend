@@ -1,5 +1,3 @@
-/* CanvasToolNavbar.css */
-
 .canvas-tool-navbar {
     height: 30px;
     background-color: #333;
@@ -30,18 +28,18 @@
     background-color: transparent;
     border: none;
     cursor: pointer;
-    height: 100%; /* Make the button take full height */
+    height: 100%;
     display: flex; 
-    align-items: center; /* Vertically center the content inside */
+    align-items: center; 
 }
 
 .tool-btn img {
-    width: 24px; /* Adjust size as needed */
+    width: 24px; 
     height: 24px;
-    filter: invert(1); /* Invert to make the icon white */
+    filter: invert(1); 
 }
   
   .tool-btn:hover img {
-    filter: invert(0.7); /* Lighter on hover */
+    filter: invert(0.7); 
   }
   
