@@ -1,11 +1,11 @@
 import React from "react";
-import CanvasNavbar from "../components/CanvasNavbar";
-import CanvasLeftSidebar from "../components/CanvasLeftSidebar";
-import CanvasRightSidebar from "../components/CanvasRightSidebar";
-import ThreeCanvas from "../components/Canvas";
-import CanvasToolNavbar from "../components/CanvasToolNavbar";
-import "../css/CanvasPage.css";
-import CanvasFooter from "../components/CanvasFooter";
+import CanvasNavbar from "./CanvasNavbar";
+import CanvasLeftSidebar from "./CanvasLeftSidebar";
+import CanvasRightSidebar from "./CanvasRightSidebar";
+import ThreeCanvas from "./Canvas";
+import CanvasToolNavbar from "./CanvasToolNavbar";
+import CanvasFooter from "./CanvasFooter";
+import "../../css/canvas_page/CanvasPage.css";
 
 const CanvasPage: React.FC = () => {
   return (

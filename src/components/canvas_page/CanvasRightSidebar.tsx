@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "../css/CanvasRightSidebar.css";
+import "../../css/canvas_page/CanvasRightSidebar.css";
 
 const CanvasRightSidebar: React.FC = () => {
   const [isVisible, setIsVisible] = useState(true);

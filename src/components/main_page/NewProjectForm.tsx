@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "../css/NewProjectForm.css";
+import "../../css/main_page/NewProjectForm.css";
 
 interface NewProjectFormProps {
   onClose: () => void;

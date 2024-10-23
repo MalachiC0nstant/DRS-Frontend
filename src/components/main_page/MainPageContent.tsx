@@ -1,6 +1,6 @@
 import React from "react";
 import ProjectCard from "./ProjectCard";
-import "../css/MainPage.css";
+import "../../css/main_page/MainPage.css";
 
 const MainPageContent: React.FC = () => {
   const projects = [

@@ -1,7 +1,7 @@
 import React from "react";
-import "../css/CanvasToolNavbar.css";
-import zoomInIcon from "../assets/zoom-in-lens-svgrepo-com.svg";
-import zoomOutIcon from "../assets/zoom-out-svgrepo-com.svg";
+import "../../css/canvas_page/CanvasToolNavbar.css";
+import zoomInIcon from "../../assets/zoom-in-lens-svgrepo-com.svg";
+import zoomOutIcon from "..//../assets/zoom-out-svgrepo-com.svg";
 
 const CanvasToolNavbar: React.FC = () => {
   return (

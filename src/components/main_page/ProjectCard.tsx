@@ -1,6 +1,6 @@
 import React from "react";
-import "../css/ProjectCard.css";
-import placeholderImage from "../assets/PlaceHolderImage.png";
+import "../../css/main_page/ProjectCard.css";
+import placeholderImage from "../../assets/PlaceHolderImage.png";
 import { useNavigate } from "react-router-dom";
 
 interface ProjectCardProps {

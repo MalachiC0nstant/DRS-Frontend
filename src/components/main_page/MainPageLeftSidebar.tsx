@@ -1,5 +1,5 @@
 import React from "react";
-import "../css/MainPageLeftSidebar.css";
+import "../../css/main_page/MainPageLeftSidebar.css";
 
 const MainPageLeftSidebar: React.FC = () => {
   return (

@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import MainPage from "./pages/MainPage";
-import CanvasPage from "./pages/CanvasPage";
+import MainPage from "./components/main_page/MainPage";
+import CanvasPage from "./components/canvas_page/CanvasPage";
 import "./App.css";
 
 const App: React.FC = () => {

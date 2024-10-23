@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import Navbar from "../components/Navbar";
-import MainPageContent from "../components/MainPageContent";
-import NewProjectForm from "../components/NewProjectForm";
-import "../css/MainPage.css";
+import Navbar from "../common/Navbar";
+import MainPageContent from "./MainPageContent";
+import NewProjectForm from "./NewProjectForm";
+import "../../css/main_page/MainPage.css";
 
 const MainPage: React.FC = () => {
   const [isFormOpen, setIsFormOpen] = useState(false);

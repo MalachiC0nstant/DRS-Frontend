@@ -1,5 +1,5 @@
 import React from "react";
-import "../css/CanvasNavbar.css";
+import "../../css/canvas_page/CanvasNavbar.css";
 
 const CanvasNavbar: React.FC = () => {
   return (

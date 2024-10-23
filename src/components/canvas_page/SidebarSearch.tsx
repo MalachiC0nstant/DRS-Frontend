@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "../../css/leftSidebar/sidebarsearch.css";
+import "../../css/canvas_page/sidebarsearch.css";
 
 const SidebarSearch: React.FC = () => {
   const [searchText, setSearchText] = useState("");

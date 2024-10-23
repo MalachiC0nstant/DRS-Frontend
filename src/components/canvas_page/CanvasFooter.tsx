@@ -1,5 +1,5 @@
 import React from "react";
-import "../css/CanvasFooter.css";
+import "../../css/canvas_page/CanvasFooter.css";
 
 const CanvasFooter: React.FC = () => {
   return (

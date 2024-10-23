@@ -1,6 +1,6 @@
 import React from "react";
-import "../css/Navbar.css";
-import searchIcon from "../assets/searchIcon.svg";
+import "../../css/common/Navbar.css";
+import searchIcon from "../../assets/searchIcon.svg";
 
 const Navbar: React.FC = () => {
   return (

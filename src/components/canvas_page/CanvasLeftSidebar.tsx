@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import "../css/CanvasLeftSidebar.css";
-import SidebarSearch from "./Sidebar/SidebarSearch";
-import SidebarShapes from "./Sidebar/SidebarShapes";
+import "../../css/canvas_page/CanvasLeftSidebar.css";
+import SidebarSearch from "./SidebarSearch";
+import SidebarShapes from "./SidebarShapes";
 
 const LeftSidebar: React.FC = () => {
   const [sidebarWidth, setSidebarWidth] = useState(200);

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "../../css/leftSidebar/SidebarShapes.css";
+import "../../css/canvas_page/SidebarShapes.css";
 
 interface SidebarShapesProps {
   title: string;
