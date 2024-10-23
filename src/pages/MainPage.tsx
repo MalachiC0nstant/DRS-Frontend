@@ -1,9 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import Navbar from "../components/Navbar";
 import MainPageContent from "../components/MainPageContent";
+import NewProjectForm from "../components/NewProjectForm";
 import "../css/MainPage.css";
 
 const MainPage: React.FC = () => {
+  const [isFormOpen, setIsFormOpen] = useState(false);
+
+  const handleNewCanvasClick = () => {
+    setIsFormOpen(true);
+  };
+
+  const closeForm = () => {
+    setIsFormOpen(false);
+  };
+
   return (
     <div className="main-page">
       <Navbar />
@@ -11,7 +22,9 @@ const MainPage: React.FC = () => {
       <div className="main-content">
         <div className="left-sidebar">
           <div className="big-button">
-            <button className="sidebar-big-btn">New Canvas</button>
+            <button className="sidebar-big-btn" onClick={handleNewCanvasClick}>
+              New Canvas
+            </button>
           </div>
 
           <div className="sidebar-section">
@@ -37,6 +50,7 @@ const MainPage: React.FC = () => {
           <MainPageContent />
         </div>
       </div>
+      {isFormOpen && <NewProjectForm onClose={closeForm} />}
     </div>
   );
 };

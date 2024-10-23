@@ -14,6 +14,26 @@ const MainPageContent: React.FC = () => {
       dateModified: "2024-09-15",
       // No snapshotUrl, so it will use the placeholder
     },
+    {
+      name: "Katy Momentum Wall",
+      dateModified: "2024-10-10",
+      //snapshotUrl: "", TODO: Add actual path to snapshot
+    },
+    {
+      name: "Katy Momentum Wall",
+      dateModified: "2024-10-10",
+      //snapshotUrl: "", TODO: Add actual path to snapshot
+    },
+    {
+      name: "Katy Momentum Wall",
+      dateModified: "2024-10-10",
+      //snapshotUrl: "", TODO: Add actual path to snapshot
+    },
+    {
+      name: "Katy Momentum Wall",
+      dateModified: "2024-10-10",
+      //snapshotUrl: "", TODO: Add actual path to snapshot
+    },
   ];
 
   return (

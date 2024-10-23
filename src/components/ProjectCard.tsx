@@ -1,6 +1,7 @@
 import React from "react";
 import "../css/ProjectCard.css";
 import placeholderImage from "../assets/PlaceHolderImage.png";
+import { useNavigate } from "react-router-dom";
 
 interface ProjectCardProps {
   name: string;
@@ -13,8 +14,22 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   dateModified,
   snapshotUrl,
 }) => {
+  const navigate = useNavigate();
+  const handleClick = () => {
+    navigate("/canvas");
+  };
+
+  const handleOptionsClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.stopPropagation();
+    console.log("Options button clicked");
+  };
+
   return (
-    <div className="project-card">
+    <div
+      className="project-card"
+      onClick={handleClick}
+      style={{ cursor: "pointer" }}
+    >
       <div className="snapshot">
         <img src={snapshotUrl || placeholderImage} alt={`${name} snapshot`} />
       </div>
@@ -23,7 +38,9 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
         <p>Modified: {dateModified}</p>
       </div>
       <div className="project-options">
-        <button className="options-button">•••</button>
+        <button className="options-button" onClick={handleOptionsClick}>
+          •••
+        </button>
       </div>
     </div>
   );

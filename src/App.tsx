@@ -10,6 +10,8 @@ const App: React.FC = () => {
       <Routes>
         <Route path="/" element={<MainPage />} />
         <Route path="/canvas" element={<CanvasPage />} />
+        <Route path="/login" element={<CanvasPage />} />
+        {/*TODO: Make the login page */}
       </Routes>
     </Router>
   );
