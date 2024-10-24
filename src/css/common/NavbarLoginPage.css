@@ -1,0 +1,31 @@
+.navbarLogin {
+  height: 100px; 
+  background-color: #333;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 40px; 
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 200;
+}
+
+.navbarLogin-left-corner {
+  flex: 1;
+}
+
+.navbarLogin-title {
+  font-size: 32px; 
+  margin-right: 20px;
+}
+
+.navbarLogin-right {
+  display: flex;
+  gap: 30px; 
+  flex: 1;
+  font-size: 28px; 
+  justify-content: flex-end;
+}
