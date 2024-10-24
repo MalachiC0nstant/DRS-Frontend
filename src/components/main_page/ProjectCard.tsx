@@ -7,56 +7,38 @@ interface ProjectCardProps {
   name: string;
   dateModified: string;
   snapshotUrl?: string;
+  isOptionsVisible: boolean;
+  onOptionsToggle: () => void;
 }
 
 const ProjectCard: React.FC<ProjectCardProps> = ({
   name,
   dateModified,
   snapshotUrl,
+  isOptionsVisible,
+  onOptionsToggle,
 }) => {
   const navigate = useNavigate();
-  const [isOptionsVisible, setOptionsVisible] = useState(false);
   const optionsRef = useRef<HTMLDivElement | null>(null);
 
-  const handleClick = () => {
+  const handleCardClick = () => {
     navigate("/canvas");
   };
 
   const handleOptionsClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation();
-    setOptionsVisible(!isOptionsVisible);
-  };
-
-  const handleClickOutside = (event: MouseEvent) => {
-    if (
-      optionsRef.current &&
-      !optionsRef.current.contains(event.target as Node)
-    ) {
-      setOptionsVisible(false);
-    }
+    onOptionsToggle();
   };
 
   const handleOptionItemClick = (e: React.MouseEvent<HTMLLIElement>) => {
     e.stopPropagation();
-    console.log("Option item clicked");
+    // TODO: add logic for stuff like, "Delete", "Share", by calling APIs later
   };
-
-  useEffect(() => {
-    if (isOptionsVisible) {
-      document.addEventListener("click", handleClickOutside);
-    } else {
-      document.removeEventListener("click", handleClickOutside);
-    }
-
-    return () => {
-      document.removeEventListener("click", handleClickOutside);
-    };
-  }, [isOptionsVisible]);
 
   return (
     <div
       className="project-card"
-      onClick={handleClick}
+      onClick={handleCardClick}
       style={{ cursor: "pointer" }}
     >
       <div className="snapshot">
@@ -71,7 +53,11 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
           •••
         </button>
         {isOptionsVisible && (
-          <div className="options-menu" ref={optionsRef}>
+          <div
+            className="options-menu"
+            ref={optionsRef}
+            onClick={(e) => e.stopPropagation()}
+          >
             <ul>
               <li onClick={handleOptionItemClick}>Add to Starred</li>
               <li onClick={handleOptionItemClick}>Share</li>
