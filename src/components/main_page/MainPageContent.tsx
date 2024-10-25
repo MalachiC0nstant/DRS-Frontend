@@ -2,7 +2,23 @@ import React, { useState, useEffect } from "react";
 import ProjectCard from "./ProjectCard";
 import "../../css/main_page/MainPage.css";
 
-const MainPageContent: React.FC = () => {
+interface MainPageContentProps {
+  selectedOption: string;
+}
+
+const MainPageContent: React.FC<MainPageContentProps> = ({
+  selectedOption,
+}) => {
+  // Kind of ugly, but will use these options to find out what content (projects) to load when calling backend api
+  let subtitle = "";
+  if (selectedOption === "Home") {
+    subtitle = "Your projects";
+  } else if (selectedOption === "Recent") {
+    subtitle = "Recently opened projects";
+  } else if (selectedOption === "Starred") {
+    subtitle = "Starred projects";
+  }
+
   const [openMenuIndex, setOpenMenuIndex] = useState<number | null>(null);
 
   const handleMenuToggle = (index: number) => {
@@ -26,7 +42,7 @@ const MainPageContent: React.FC = () => {
       document.removeEventListener("click", handleClickOutside);
     };
   }, []);
-  
+
   // TODO: Call API to receive project data
   // TODO: Create snapshot of project canvas and add input type to project
   const projects = [
@@ -39,16 +55,20 @@ const MainPageContent: React.FC = () => {
   ];
 
   return (
-    <div className="projects-container">
-      {projects.map((project, index) => (
-        <ProjectCard
-          key={index}
-          name={project.name}
-          dateModified={project.dateModified}
-          isOptionsVisible={openMenuIndex === index}
-          onOptionsToggle={() => handleMenuToggle(index)}
-        />
-      ))}
+    <div>
+      <h1>{selectedOption}</h1>
+      <h2>{subtitle}</h2>
+      <div className="projects-container">
+        {projects.map((project, index) => (
+          <ProjectCard
+            key={index}
+            name={project.name}
+            dateModified={project.dateModified}
+            isOptionsVisible={openMenuIndex === index}
+            onOptionsToggle={() => handleMenuToggle(index)}
+          />
+        ))}
+      </div>
     </div>
   );
 };

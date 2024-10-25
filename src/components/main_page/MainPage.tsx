@@ -6,6 +6,7 @@ import "../../css/main_page/MainPage.css";
 
 const MainPage: React.FC = () => {
   const [isFormOpen, setIsFormOpen] = useState(false);
+  const [selectedOption, setSelectedOption] = useState<string>("Home"); 
 
   const handleNewCanvasClick = () => {
     setIsFormOpen(true);
@@ -13,6 +14,11 @@ const MainPage: React.FC = () => {
 
   const closeForm = () => {
     setIsFormOpen(false);
+  };
+
+
+  const handleOptionClick = (option: string) => {
+    setSelectedOption(option); 
   };
 
   return (
@@ -29,9 +35,9 @@ const MainPage: React.FC = () => {
 
           <div className="sidebar-section">
             <ul>
-              <li>Home</li>
-              <li>Recent</li>
-              <li>Starred</li>
+              <li onClick={() => handleOptionClick("Home")}>Home</li>
+              <li onClick={() => handleOptionClick("Recent")}>Recent</li>
+              <li onClick={() => handleOptionClick("Starred")}>Starred</li>
             </ul>
           </div>
 
@@ -47,7 +53,7 @@ const MainPage: React.FC = () => {
         </div>
 
         <div className="page-content">
-          <MainPageContent />
+          <MainPageContent selectedOption={selectedOption} />{" "}
         </div>
       </div>
       {isFormOpen && <NewProjectForm onClose={closeForm} />}
