@@ -60,7 +60,7 @@ html, body {
   justify-content: center;
   align-items: center;
   margin-left: var(--sidebar-width, 200px);  
-  margin-right: 200px; 
+  /* margin-right: 200px;  */
   overflow: hidden;
   transition: margin-left 0.2s ease; 
 }

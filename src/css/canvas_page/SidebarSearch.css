@@ -1,4 +1,4 @@
-.search-box {
+/* .search-box {
     display: flex;
     align-items: center;
     background-color: #444;
@@ -7,7 +7,7 @@
     margin-bottom: 15px; 
     position: relative;
   }
-  
+   */
   .search-input {
     width: 100%;
     padding: 8px;

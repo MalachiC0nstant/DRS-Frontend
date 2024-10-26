@@ -1,13 +1,14 @@
 import React from "react";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
+import Hold from "./climbing_objects/ClimbingHold";
 
 const ThreeCanvas: React.FC = () => {
   return (
     <Canvas
       style={{ height: "100vh", width: "100vw" }}
       gl={{ antialias: true }}
-      onCreated={(state) => state.gl.setClearColor("#333333")} 
+      onCreated={(state) => state.gl.setClearColor("#333333")}
     >
       <ambientLight intensity={0.5} />
       <pointLight position={[10, 10, 10]} />
