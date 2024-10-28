@@ -1,7 +1,7 @@
 import React from "react";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
-import Hold from "./climbing_objects/ClimbingHold";
+import ClimbingHold from "./climbing_objects/ClimbingHold";
 
 const ThreeCanvas: React.FC = () => {
   return (
@@ -12,18 +12,15 @@ const ThreeCanvas: React.FC = () => {
     >
       <ambientLight intensity={0.5} />
       <pointLight position={[10, 10, 10]} />
-
-      {/* Grid Helper */}
       <gridHelper args={[10, 10, "#ffffff", "#888888"]} />
 
-      {/* 3D objects go here */}
-      <mesh>
-        <boxGeometry args={[1, 1, 1]} />
-        <meshStandardMaterial color="orange" />
-      </mesh>
-
-      {/* Camera controls */}
-      <OrbitControls />
+      {/* Test ClimbingHold component */}
+      <ClimbingHold
+        position={[0, 0.5, 0]}
+        size={[0.3, 0.3, 0.3]}
+        color="blue"
+        holdType="cube"
+      />
     </Canvas>
   );
 };
