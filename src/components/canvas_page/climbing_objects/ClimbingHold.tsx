@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import { useFrame } from "@react-three/fiber";
+import * as THREE from "three";
 
 interface HoldProps {
   position: [number, number, number];
   size: [number, number, number];
   color: string;
-  holdType?: "cube" | "sphere"; // crimp, pinch, volume..., etc.
+  holdType?: "cube" | "sphere";
 }
 
 const ClimbingHold: React.FC<HoldProps> = ({
@@ -14,8 +14,44 @@ const ClimbingHold: React.FC<HoldProps> = ({
   color,
   holdType = "cube",
 }) => {
+  const [isDragging, setIsDragging] = useState(false);
+  const [currentPosition, setCurrentPosition] = useState<THREE.Vector3>(
+    new THREE.Vector3(...position)
+  );
+
+  const onPointerDown = (event: any) => {
+    event.stopPropagation();
+    setIsDragging(true);
+  };
+
+  const onPointerMove = (event: any) => {
+    if (isDragging) {
+      event.stopPropagation();
+      const newPosition = event.point;
+      setCurrentPosition(newPosition);
+    }
+  };
+
+  const onPointerUp = (event: any) => {
+    event.stopPropagation();
+    setIsDragging(false);
+  };
+
+  const onPointerOut = (event: any) => {
+    if (isDragging) {
+      event.stopPropagation();
+      setIsDragging(false);
+    }
+  };
+
   return (
-    <mesh position={position}>
+    <mesh
+      position={currentPosition}
+      onPointerDown={onPointerDown}
+      onPointerMove={onPointerMove}
+      onPointerUp={onPointerUp}
+      onPointerOut={onPointerOut}
+    >
       {holdType === "sphere" ? (
         <sphereGeometry args={[size[0] / 2, 32, 32]} />
       ) : (
