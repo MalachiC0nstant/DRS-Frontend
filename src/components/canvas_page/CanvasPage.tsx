@@ -5,34 +5,25 @@ import CanvasRightSidebar from "./CanvasRightSidebar";
 import ThreeCanvas from "./Canvas";
 import CanvasToolNavbar from "./CanvasToolNavbar";
 import CanvasFooter from "./CanvasFooter";
+import { HoldProvider } from "./HoldContext";
 import "../../css/canvas_page/CanvasPage.css";
 
 const CanvasPage: React.FC = () => {
   return (
-    <div className="canvas-page">
-      {/* Top Navbar */}
-      <CanvasNavbar />
-
-      {/* Tool Navbar */}
-      <CanvasToolNavbar />
-
-      {/* Main Content Area */}
-      <div className="canvas-content">
-        {/* Left Sidebar */}
-        <CanvasLeftSidebar />
-
-        {/* Canvas (Center) */}
-        <div className="canvas-container">
-          <ThreeCanvas />
+    <HoldProvider>
+      <div className="canvas-page">
+        <CanvasNavbar />
+        <CanvasToolNavbar />
+        <div className="canvas-content">
+          <CanvasLeftSidebar />
+          <div className="canvas-container">
+            <ThreeCanvas />
+          </div>
+          <CanvasRightSidebar />
         </div>
-
-        {/* Right Sidebar */}
-        <CanvasRightSidebar />
+        <CanvasFooter />
       </div>
-
-      {/* Footer */}
-      <CanvasFooter />
-    </div>
+    </HoldProvider>
   );
 };
 
