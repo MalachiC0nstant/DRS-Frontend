@@ -1,18 +1,43 @@
-import React from "react";
+import React, { useState } from "react";
 import "../../css/common/Navbar.css";
 import { useNavigate } from "react-router-dom";
+import axios from "axios"; 
 import searchIcon from "../../assets/searchIcon.svg";
+import ProfilePicturePlaceholder from "../../assets/ProfilePicturePlaceholder.png"; 
 
 const Navbar: React.FC = () => {
   const navigate = useNavigate();
+  const [dropdownOpen, setDropdownOpen] = useState(false);
 
-  const handleLoginClick = () => {
-    navigate("/login");
+  const handleProfileClick = () => {
+    setDropdownOpen(!dropdownOpen);
+  };
+
+  const handleLogout = async () => {
+    try {
+      const response = await axios.post(
+        "http://localhost:8081/logoutUser",
+        {},
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "*/*",
+          },
+          withCredentials: true,
+        }
+      );
+      console.log("Logout successful");
+      navigate("/");
+    } catch (error) {
+      console.error("Logout failed", error);
+    }
   };
   return (
     <div className="navbar">
       <div className="navbar-left-corner">
-        <div className="navbar-title">Digital Route Setter</div>
+        <div className="navbar-title" onClick={() => navigate("/")}>
+          Digital Route Setter
+        </div>
       </div>
       <div className="navbar-search">
         <img src={searchIcon} alt="Search" className="search-icon" />
@@ -24,8 +49,25 @@ const Navbar: React.FC = () => {
       <div className="navbar-right">
         <div>Help</div>
         <div>Upgrade</div>
-        <div onClick={handleLoginClick} style={{ cursor: "pointer" }}>
-          Login
+        <div className="profile-section">
+          <img
+            src={ProfilePicturePlaceholder}
+            alt="Profile"
+            className="profile-picture"
+            onClick={handleProfileClick}
+          />
+          {dropdownOpen && (
+            <div className="profile-dropdown">
+              <ul>
+                <li onClick={() => navigate("/profile")}>Profile</li>
+                <li onClick={() => navigate("/settings")}>Settings</li>
+                <li onClick={() => navigate("/notifications")}>
+                  Notifications
+                </li>
+                <li onClick={handleLogout}>Logout</li>
+              </ul>
+            </div>
+          )}
         </div>
       </div>
     </div>

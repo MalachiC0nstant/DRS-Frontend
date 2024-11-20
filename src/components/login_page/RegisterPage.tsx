@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import axios from "axios"; // Import axios
 import "../../css/login_page/RegisterPage.css";
 import NavbarLogin from "../common/NavbarLoginPage";
 
@@ -21,52 +22,35 @@ const RegisterPage: React.FC = () => {
     }));
   };
 
-  // const checkEmailExists = async (email: string) => {
-  //   try {
-  //     const response = await fetch(
-  //       `https://your-backend-url.com/check-email?email=${email}`,
-  //       {
-  //         method: "GET",
-  //       }
-  //     );
-
-  //     if (!response.ok) {
-  //       throw new Error("Failed to check email.");
-  //     }
-
-  //     const data = await response.json();
-  //     return data.exists;
-  //   } catch (err) {
-  //     console.error("Error checking email:", err);
-  //     return false;
-  //   }
-  // };
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    // const emailExists = await checkEmailExists(formData.email);
-    // if (emailExists) {
-    //   setError("Email is already registered.");
+    // Make sure password and confirmPassword match
+    // if (formData.password !== formData.confirmPassword) {
+    //   setError("Passwords do not match.");
     //   return;
     // }
 
     try {
-      const response = await fetch("http://localhost:8081/register", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
+      const response = await axios.post(
+        "http://localhost:8081/register",
+        {
           firstName: formData.firstName,
           lastName: formData.lastName,
           email: formData.email,
           password: formData.password,
-        }),
-      });
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "*/*",
+          },
+        }
+      );
 
-      if (response.ok) {
+      if (response.status === 200) {
         console.log("User registered successfully.");
+        setError(""); 
       } else {
         setError("Registration failed. Please try again.");
       }

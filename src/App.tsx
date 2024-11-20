@@ -4,13 +4,15 @@ import MainPage from "./components/main_page/MainPage";
 import CanvasPage from "./components/canvas_page/CanvasPage";
 import LoginPage from "./components/login_page/LoginPage";
 import RegisterPage from "./components/login_page/RegisterPage";
+import LandingPage from "./components/LandingPage";
 import "./App.css";
 
 const App: React.FC = () => {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<MainPage />} />
+        <Route path="/" element={<LandingPage />} />
+        <Route path="/home" element={<MainPage />} />
         <Route path="/canvas" element={<CanvasPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
