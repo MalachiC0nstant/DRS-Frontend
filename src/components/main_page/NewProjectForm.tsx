@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "../../css/main_page/NewProjectForm.css";
+import axios from "axios";
 
 interface NewProjectFormProps {
   onClose: () => void;
@@ -7,6 +8,32 @@ interface NewProjectFormProps {
 
 const NewProjectForm: React.FC<NewProjectFormProps> = ({ onClose }) => {
   const [projectName, setProjectName] = useState("");
+  const [projectLocation, setProjectLocation] = useState("");
+
+  const handleCreateProject = async () => {
+    try {
+      const projectData = {
+        name: projectName,
+        snapshotUrl: "http://example.com/snapshot.jpg",
+      };
+
+      const response = await axios.post(
+        "http://localhost:8081/api/projectcard/create",
+        projectData,
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "*/*",
+          },
+        }
+      );
+
+      console.log("Project created:", response.data);
+      onClose();
+    } catch (error) {
+      console.error("Error creating project:", error);
+    }
+  };
 
   return (
     <div className="form-overlay">
@@ -31,8 +58,12 @@ const NewProjectForm: React.FC<NewProjectFormProps> = ({ onClose }) => {
           <label htmlFor="projectLocation" className="dropdown-label">
             Project Location
           </label>
-          <select id="projectLocation">
-            <option value="" disabled selected>
+          <select
+            id="projectLocation"
+            value={projectLocation}
+            onChange={(e) => setProjectLocation(e.target.value)}
+          >
+            <option value="" disabled>
               Select location
             </option>
             <option value="placeholder">Placeholder</option>
@@ -43,7 +74,9 @@ const NewProjectForm: React.FC<NewProjectFormProps> = ({ onClose }) => {
           <button className="cancel-btn" onClick={onClose}>
             Cancel
           </button>
-          <button className="create-btn">Create Project</button>
+          <button className="create-btn" onClick={handleCreateProject}>
+            Create Project
+          </button>
         </div>
       </div>
     </div>

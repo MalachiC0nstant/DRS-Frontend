@@ -13,7 +13,7 @@ const LoginPage: React.FC = () => {
   const handleLogin = async () => {
     try {
       const response = await axios.post(
-        "http://localhost:8081/login",
+        "http://localhost:8081/api/user/login",
         {
           email: email,
           password: password,

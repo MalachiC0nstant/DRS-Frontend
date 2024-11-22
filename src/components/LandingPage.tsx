@@ -9,7 +9,9 @@ const LandingPage: React.FC = () => {
 
   const checkAuthentication = () => {
     axios
-      .get("http://localhost:8081/isAuthenticated", { withCredentials: true })
+      .get("http://localhost:8081/api/user/isAuthenticated", {
+        withCredentials: true,
+      })
       .then((response) => {
         if (response.data === true) {
           navigate("/home");

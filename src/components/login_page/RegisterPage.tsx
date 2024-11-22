@@ -33,7 +33,7 @@ const RegisterPage: React.FC = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:8081/register",
+        "http://localhost:8081/api/user/register",
         {
           firstName: formData.firstName,
           lastName: formData.lastName,
@@ -50,7 +50,7 @@ const RegisterPage: React.FC = () => {
 
       if (response.status === 200) {
         console.log("User registered successfully.");
-        setError(""); 
+        setError("");
       } else {
         setError("Registration failed. Please try again.");
       }
