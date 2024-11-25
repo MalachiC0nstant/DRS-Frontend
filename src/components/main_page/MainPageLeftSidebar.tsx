@@ -10,7 +10,7 @@ const MainPageLeftSidebar: React.FC = () => {
           <li>Recent</li>
           <li>Starred</li>
           <li>Templates</li>
-          {/* Add more sidebar items */}
+          {/* Add more sidebar items here*/}
         </ul>
       </div>
     </div>

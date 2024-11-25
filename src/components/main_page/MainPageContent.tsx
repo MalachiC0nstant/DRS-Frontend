@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import ProjectCard from "./ProjectCard";
+import axios from "axios";
 import "../../css/main_page/MainPage.css";
 
 interface MainPageContentProps {
@@ -20,6 +21,7 @@ const MainPageContent: React.FC<MainPageContentProps> = ({
   }
 
   const [openMenuIndex, setOpenMenuIndex] = useState<number | null>(null);
+  const [projects, setProjects] = useState<any[]>([]);
 
   const handleMenuToggle = (index: number) => {
     if (openMenuIndex === index) {
@@ -43,16 +45,28 @@ const MainPageContent: React.FC<MainPageContentProps> = ({
     };
   }, []);
 
-  // TODO: Call API to receive project data
-  // TODO: Create snapshot of project canvas and add input type to project
-  const projects = [
-    { name: "Katy Momentum Wall", dateModified: "2024-10-10" },
-    { name: "Silver Street", dateModified: "2024-09-15" },
-    { name: "Katy Momentum Wall", dateModified: "2024-10-10" },
-    { name: "Katy Momentum Wall", dateModified: "2024-10-10" },
-    { name: "Katy Momentum Wall", dateModified: "2024-10-10" },
-    { name: "Katy Momentum Wall", dateModified: "2024-10-10" },
-  ];
+  useEffect(() => {
+    axios
+      .get("http://localhost:8081/api/projectcard/projects", {
+        withCredentials: true,
+      })
+      .then((response) => {
+        setProjects(response.data);
+      })
+      .catch((error) => {
+        console.error("Error fetching projects:", error);
+      });
+  }, []);
+
+  const handleDeleteProject = (projectId: string) => {
+    setProjects((prevProjects) =>
+      prevProjects.filter((project) => project.id !== projectId)
+    );
+  };
+
+  const handleDuplicateProject = (newProject: any) => {
+    setProjects((prevProjects) => [...prevProjects, newProject]);
+  };
 
   return (
     <div>
@@ -61,11 +75,14 @@ const MainPageContent: React.FC<MainPageContentProps> = ({
       <div className="projects-container">
         {projects.map((project, index) => (
           <ProjectCard
-            key={index}
+            key={project.id.toString()}
+            id={project.id}
             name={project.name}
             dateModified={project.dateModified}
             isOptionsVisible={openMenuIndex === index}
             onOptionsToggle={() => handleMenuToggle(index)}
+            onDelete={handleDeleteProject}
+            onDuplicate={handleDuplicateProject}
           />
         ))}
       </div>

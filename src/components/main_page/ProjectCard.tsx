@@ -1,25 +1,58 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef } from "react";
 import "../../css/main_page/ProjectCard.css";
 import placeholderImage from "../../assets/PlaceHolderImage.png";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
+// import { ObjectId } from "mongodb";
 
 interface ProjectCardProps {
+  id: string;
   name: string;
   dateModified: string;
   snapshotUrl?: string;
   isOptionsVisible: boolean;
   onOptionsToggle: () => void;
+  onDelete: (id: string) => void;
+  onDuplicate: (newProject: any) => void;
 }
 
 const ProjectCard: React.FC<ProjectCardProps> = ({
+  id,
   name,
   dateModified,
   snapshotUrl,
   isOptionsVisible,
   onOptionsToggle,
+  onDelete,
+  onDuplicate,
 }) => {
   const navigate = useNavigate();
   const optionsRef = useRef<HTMLDivElement | null>(null);
+
+  const handleDeleteProject = async () => {
+    try {
+      await axios.delete(`http://localhost:8081/api/projectcard/delete/${id}`, {
+        withCredentials: true,
+      });
+      onDelete(id);
+    } catch (error) {
+      console.error("Error deleting project:", error);
+    }
+  };
+
+  const handleDuplicateProject = async () => {
+    try {
+      const response = await axios.post(
+        `http://localhost:8081/api/projectcard/duplicate/${id}`,
+        {},
+        { withCredentials: true }
+      );
+      const duplicatedProject = response.data;
+      onDuplicate(duplicatedProject);
+    } catch (error) {
+      console.error("Error duplicating project:", error);
+    }
+  };
 
   const handleCardClick = () => {
     navigate("/canvas");
@@ -30,9 +63,17 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
     onOptionsToggle();
   };
 
-  const handleOptionItemClick = (e: React.MouseEvent<HTMLLIElement>) => {
+  const handleOptionItemClick = (
+    e: React.MouseEvent<HTMLLIElement>,
+    action: string
+  ) => {
     e.stopPropagation();
-    // TODO: add logic for stuff like, "Delete", "Share", by calling APIs later
+    if (action === "Delete") {
+      handleDeleteProject();
+    } else if (action === "Duplicate") {
+      handleDuplicateProject();
+    }
+    // TODO: Add other options here like share, info...
   };
 
   return (
@@ -59,14 +100,26 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
             onClick={(e) => e.stopPropagation()}
           >
             <ul>
-              <li onClick={handleOptionItemClick}>Add to Starred</li>
-              <li onClick={handleOptionItemClick}>Share</li>
-              <li onClick={handleOptionItemClick}>Project Info</li>
-              <li onClick={handleOptionItemClick}>Duplicate</li>
-              <li onClick={handleOptionItemClick}>Move</li>
-              <li onClick={handleOptionItemClick}>Archive</li>
-              <li onClick={handleOptionItemClick}>Rename</li>
-              <li onClick={handleOptionItemClick}>Delete</li>
+              <li onClick={(e) => handleOptionItemClick(e, "Add to Starred")}>
+                Add to Starred
+              </li>
+              <li onClick={(e) => handleOptionItemClick(e, "Share")}>Share</li>
+              <li onClick={(e) => handleOptionItemClick(e, "Project Info")}>
+                Project Info
+              </li>
+              <li onClick={(e) => handleOptionItemClick(e, "Duplicate")}>
+                Duplicate
+              </li>
+              <li onClick={(e) => handleOptionItemClick(e, "Move")}>Move</li>
+              <li onClick={(e) => handleOptionItemClick(e, "Archive")}>
+                Archive
+              </li>
+              <li onClick={(e) => handleOptionItemClick(e, "Rename")}>
+                Rename
+              </li>
+              <li onClick={(e) => handleOptionItemClick(e, "Delete")}>
+                Delete
+              </li>
             </ul>
           </div>
         )}

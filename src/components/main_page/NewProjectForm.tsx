@@ -25,6 +25,7 @@ const NewProjectForm: React.FC<NewProjectFormProps> = ({ onClose }) => {
             "Content-Type": "application/json",
             Accept: "*/*",
           },
+          withCredentials: true,
         }
       );
 
