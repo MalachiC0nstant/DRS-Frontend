@@ -3,17 +3,19 @@ import axios from "axios";
 import "../../css/login_page/LoginPage.css";
 import NavbarLogin from "../common/NavbarLoginPage";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../AuthContext";
 
 const LoginPage: React.FC = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const navigate = useNavigate();
+  const { refreshAuthStatus } = useAuth();
 
   const handleLogin = async () => {
     try {
       const response = await axios.post(
-        "http://localhost:8081/api/user/login",
+        "http://localhost:8081/api/user/loginUser",
         {
           email: email,
           password: password,
@@ -29,7 +31,8 @@ const LoginPage: React.FC = () => {
 
       if (response.status === 200) {
         setError("");
-        navigate("/");
+        refreshAuthStatus();
+        navigate("/home");
       } else {
         setError("Login failed. Please try again.");
       }

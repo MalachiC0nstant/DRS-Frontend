@@ -2,27 +2,16 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import LandingNavbar from "./common/LandingNavbar";
+import { useAuth } from "./AuthContext";
 import "../css/common/LandingPage.css";
 
 const LandingPage: React.FC = () => {
   const navigate = useNavigate();
+  const { refreshAuthStatus } = useAuth();
 
   const checkAuthentication = () => {
-    axios
-      .get("http://localhost:8081/api/user/isAuthenticated", {
-        withCredentials: true,
-      })
-      .then((response) => {
-        if (response.data === true) {
-          navigate("/home");
-        } else {
-          navigate("/login");
-        }
-      })
-      .catch((error) => {
-        console.error("Error checking authentication:", error);
-        navigate("/login");
-      });
+    refreshAuthStatus();
+    navigate("/home");
   };
 
   return (

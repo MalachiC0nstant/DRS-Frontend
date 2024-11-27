@@ -5,20 +5,29 @@ import CanvasPage from "./components/canvas_page/CanvasPage";
 import LoginPage from "./components/login_page/LoginPage";
 import RegisterPage from "./components/login_page/RegisterPage";
 import LandingPage from "./components/LandingPage";
+import { AuthProvider } from "./components/AuthContext";
+import PrivateRoute from "./components/PrivateRoute";
 import "./App.css";
 
 const App: React.FC = () => {
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<LandingPage />} />
-        <Route path="/home" element={<MainPage />} />
-        <Route path="/canvas" element={<CanvasPage />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/register" element={<RegisterPage />} />
-        {/*Add more routing here */}
-      </Routes>
-    </Router>
+    <AuthProvider>
+      <Router>
+        <Routes>
+          <Route path="/" element={<LandingPage />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/register" element={<RegisterPage />} />
+          <Route
+            path="/home"
+            element={<PrivateRoute element={<MainPage />} />}
+          />
+          <Route
+            path="/canvas"
+            element={<PrivateRoute element={<CanvasPage />} />}
+          />
+        </Routes>
+      </Router>
+    </AuthProvider>
   );
 };
 
