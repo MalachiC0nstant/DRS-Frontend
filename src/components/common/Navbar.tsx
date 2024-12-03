@@ -1,13 +1,14 @@
 import React, { useState } from "react";
 import "../../css/common/Navbar.css";
 import { useNavigate } from "react-router-dom";
-import axios from "axios"; 
+import axios from "axios";
 import searchIcon from "../../assets/searchIcon.svg";
-import ProfilePicturePlaceholder from "../../assets/ProfilePicturePlaceholder.png"; 
+import ProfilePicturePlaceholder from "../../assets/ProfilePicturePlaceholder.png";
 
 const Navbar: React.FC = () => {
   const navigate = useNavigate();
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
 
   const handleProfileClick = () => {
     setDropdownOpen(!dropdownOpen);
@@ -32,6 +33,7 @@ const Navbar: React.FC = () => {
       console.error("Logout failed", error);
     }
   };
+
   return (
     <div className="navbar">
       <div className="navbar-left-corner">
@@ -39,13 +41,18 @@ const Navbar: React.FC = () => {
           Digital Route Setter
         </div>
       </div>
-      <div className="navbar-search">
-        <img src={searchIcon} alt="Search" className="search-icon" />
-        <input
-          type="text"
-          placeholder="Search for Projects, Templates, Communities"
-        />
+      <div className="navbar-center">
+        <div className="search-box">
+          <input
+            type="search"
+            placeholder="Search for projects"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+          />
+          <img src={searchIcon} alt="Search Icon" className="search-icon" />
+        </div>
       </div>
+
       <div className="navbar-right">
         <div>Help</div>
         <div>Upgrade</div>
