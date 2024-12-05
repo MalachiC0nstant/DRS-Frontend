@@ -8,6 +8,7 @@ import LandingPage from "./components/LandingPage";
 import { AuthProvider } from "./components/AuthContext";
 import PrivateRoute from "./components/PrivateRoute";
 import "./App.css";
+import ProfilePage from "./components/profile_page/ProfilePage";
 
 const App: React.FC = () => {
   return (
@@ -24,6 +25,10 @@ const App: React.FC = () => {
           <Route
             path="/canvas"
             element={<PrivateRoute element={<CanvasPage />} />}
+          />
+          <Route
+            path="/profile"
+            element={<PrivateRoute element={<ProfilePage />} />}
           />
         </Routes>
       </Router>

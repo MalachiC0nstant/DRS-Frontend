@@ -1,0 +1,74 @@
+.profile-page {
+    background-color: white; 
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .profile-page .main-content {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    margin: 20px auto; 
+    max-width: 1200px;
+    width: 90%;
+    border: 2px solid black; 
+    background-color: white; 
+    border-radius: 12px; 
+  }
+  
+  .profile-page .top-half {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+    background-color: white;
+    padding: 20px;
+    border-radius: 12px;
+    align-items: center;
+  }
+  
+  .profile-page .profile-picture-section {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .profile-page .profile-img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 2px solid #ccc;
+  }
+  
+  .profile-page .profile-info-section {
+    flex: 2;
+  }
+  
+  .profile-page .profile-info-section h2 {
+    margin-bottom: 10px;
+  }
+  
+  .profile-page .info-item {
+    margin: 10px 0;
+    font-size: 18px;
+  }
+  
+
+  .profile-page .bottom-half {
+    background-color: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .profile-page .bottom-half h3 {
+    margin-bottom: 20px;
+  }
+  
+  .profile-page .project-placeholder {
+    background-color: #eaeaea;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    text-align: center;
+  }
+  

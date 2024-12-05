@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../../css/common/Navbar.css";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -9,6 +9,9 @@ const Navbar: React.FC = () => {
   const navigate = useNavigate();
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
+  const [profileImage, setProfileImage] = useState<string>(
+    ProfilePicturePlaceholder
+  );
 
   const handleProfileClick = () => {
     setDropdownOpen(!dropdownOpen);
@@ -34,6 +37,27 @@ const Navbar: React.FC = () => {
     }
   };
 
+  useEffect(() => {
+    const fetchProfileImage = async () => {
+      try {
+        const response = await axios.get(
+          "http://localhost:8081/api/user/getImage",
+          {
+            withCredentials: true,
+            responseType: "blob",
+          }
+        );
+
+        const imageUrl = URL.createObjectURL(response.data);
+        setProfileImage(imageUrl);
+      } catch (error) {
+        console.error("Error fetching profile image:", error);
+      }
+    };
+
+    fetchProfileImage();
+  }, []);
+
   return (
     <div className="navbar">
       <div className="navbar-left-corner">
@@ -58,7 +82,7 @@ const Navbar: React.FC = () => {
         <div>Upgrade</div>
         <div className="profile-section">
           <img
-            src={ProfilePicturePlaceholder}
+            src={profileImage}
             alt="Profile"
             className="profile-picture"
             onClick={handleProfileClick}
